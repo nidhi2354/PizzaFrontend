@@ -1,5 +1,8 @@
 import ArrowRight from "../Components/Icons/ArrowRight.jsx";
+
 import pizza from "../assets/Images/Pizza.png";
+import CookingImage from "../assets/Images/CookingImage.png";
+import { PatchCheck } from "../Components/Icons/PatchCheck.jsx";
 
 function Home() {
   return (
@@ -29,6 +32,57 @@ function Home() {
 
         <div className="flex justify-center">
           <img src={pizza} alt="Pizza" width={550} height={550} />
+        </div>
+      </section>
+      {/*Service section */}
+
+      <section className="py-4 mt-6 bg-gradient-to-r from-amber-50 to-orange-300">
+        <div className="container flex flex-col md:flex-row">
+          <div className="flex flex-col items-center justify-center rounded-lg lg:w-1/2">
+            <img
+              src={CookingImage}
+              width={500}
+              className="rounded-lg"
+              alt="Cooking"
+            ></img>
+          </div>
+          <div className="flex flex-col flex-wrap text-center lg:py-6 lg:w-1/2 lg:pl-12 lg:text-left ">
+            <div>
+              <div className="flex flex-col items-center lg:items-start">
+                <h2 className="mb-2 text-5xl font-extrabold text-transparent title-font bg-gradient-to-r from-orange-600 to-orange-300 bg-clip-text">
+                  Cooked by the best <br /> chefs in the world
+                </h2>
+
+                <p className="text-base leading-relaxed text-[#687280]">
+                  There are many benifits regarding to that but the main ones
+                  are:
+                </p>
+              </div>
+            </div>
+
+            <div className="w-full p-1">
+              <div className="flex items-center h-full p-2 text-2xl  rounded">
+                <PatchCheck className="text-[rgb(243,131,57)] w-10 h-10 mr-4" />
+                <span className="font-bold title-font">Perfect taste</span>
+              </div>
+            </div>
+
+            <div className="w-full p-1">
+              <div className="flex items-center h-full p-2 text-2xl  rounded">
+                <PatchCheck className="text-[rgb(243,131,57)] w-10 h-10 mr-4" />
+                <span className="font-bold title-font">Prepared quickly</span>
+              </div>
+            </div>
+
+            <div className="w-full p-1">
+              <div className="flex items-center h-full p-2 text-2xl  rounded">
+                <PatchCheck className="text-[rgb(243,131,57)] w-10 h-10 mr-4" />
+                <span className="font-bold title-font">
+                  Food hygeine guaranteed
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
