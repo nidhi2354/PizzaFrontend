@@ -1,6 +1,10 @@
 import ArrowRight from "../Components/Icons/ArrowRight.jsx";
 
 import pizza from "../assets/Images/Pizza.png";
+import OrderFood from "../assets/Images/OrderFood.png";
+import PickupFood from "../assets/Images/PickupFood.png";
+import EnjoyFood from "../assets/Images/EnjoyFood.png";
+
 import CookingImage from "../assets/Images/CookingImage.png";
 import { PatchCheck } from "../Components/Icons/PatchCheck.jsx";
 
@@ -59,27 +63,83 @@ function Home() {
                 </p>
               </div>
             </div>
-
             <div className="w-full p-1">
               <div className="flex items-center h-full p-2 text-2xl  rounded">
                 <PatchCheck className="text-[rgb(243,131,57)] w-10 h-10 mr-4" />
                 <span className="font-bold title-font">Perfect taste</span>
               </div>
             </div>
-
             <div className="w-full p-1">
               <div className="flex items-center h-full p-2 text-2xl  rounded">
                 <PatchCheck className="text-[rgb(243,131,57)] w-10 h-10 mr-4" />
                 <span className="font-bold title-font">Prepared quickly</span>
               </div>
             </div>
-
             <div className="w-full p-1">
               <div className="flex items-center h-full p-2 text-2xl  rounded">
                 <PatchCheck className="text-[rgb(243,131,57)] w-10 h-10 mr-4" />
                 <span className="font-bold title-font">
                   Food hygeine guaranteed
                 </span>
+              </div>
+            </div>
+
+            <div className="px-5 py-4 mx-auto">
+              <div className="flex justify-center py-4">
+                <div className="inline-flex- w-16 h-1 bg-yellow-500 rounded-full"></div>
+              </div>
+
+              <div className="flex flex-wrap space-y-6 md:space-y-0 ">
+                <div className="flex flex-col items-center text-center p-4 md:w-1/3">
+                  <div className="inline-flex items-center justify-center flex-shrink-0 w-20 h-20 mb-5 bg-yellow-10 rounded-full">
+                    <img src={OrderFood} />
+                  </div>
+
+                  <div className="flex-grow">
+                    <h2 className="mb-3 text-lg font-medium text-gray-900 title-font font-bold">
+                      Order Food
+                    </h2>
+
+                    <p className="text-base leading-relaxed font-medium">
+                      As easy as 1,2,3. Just select your favorite pizza and
+                      place your order.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-center text-center p-4 md:w-1/3">
+                  <div className="inline-flex items-center justify-center flex-shrink-0 w-20 h-20 mb-5 bg-yellow-10 rounded-full">
+                    <img src={PickupFood} />
+                  </div>
+
+                  <div className="flex-grow">
+                    <h2 className="mb-3 text-lg font-medium text-gray-900 title-font font-bold">
+                      Pickup Food
+                    </h2>
+
+                    <p className="text-base leading-relaxed font-medium">
+                      Pick up your order from the nearest store or get it
+                      delivered to your doorstep.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-center text-center p-4 md:w-1/3">
+                  <div className="inline-flex items-center justify-center flex-shrink-0 w-20 h-20 mb-5 bg-yellow-10 rounded-full">
+                    <img src={EnjoyFood} />
+                  </div>
+
+                  <div className="flex-grow">
+                    <h2 className="mb-3 text-lg font-medium text-gray-900 title-font font-bold">
+                      Enjoy Food
+                    </h2>
+
+                    <p className="text-base leading-relaxed font-medium">
+                      As soon as you get your order, enjoy the delicious pizza
+                      with your loved ones.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
