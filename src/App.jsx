@@ -1,16 +1,19 @@
 import { useState } from "react";
 import "./index.css";
 
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home.jsx";
-import Layout from "./Layouts/Layouts.jsx";
+import Signup from "./Pages/Auth/Signup.jsx";
 
 function App() {
   return (
-    <div>
-      <Layout>
-        <Home />
-      </Layout>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/auth/signup" element={<Signup />} />
+      </Routes>
+    </>
   );
 }
 
