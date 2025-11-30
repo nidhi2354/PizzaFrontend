@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 function Signup() {
   return (
     <>
@@ -5,114 +6,152 @@ function Signup() {
         <div className="flex flex-wrap items-center h-screen px-10 py-6 mx-auto">
           <div className="hidden pr-0 lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 md:block">
             <svg
-              width="100%"
-              height="100%"
-              viewBox="0 0 500 400"
+              width="90%"
+              height="90%"
+              viewBox="0 0 800 600"
               xmlns="http://www.w3.org/2000/svg"
-              className="max-w-md mx-auto"
+              preserveAspectRatio="xMidYMid meet"
             >
-              <ellipse cx="250" cy="350" rx="200" ry="30" fill="#E3F2FD" />
-              <circle cx="420" cy="80" r="40" fill="#E0F7FA" opacity="0.6" />
-              <circle cx="80" cy="100" r="50" fill="#BBDEFB" opacity="0.4" />
+              <defs>
+                <linearGradient id="bg" x1="0" x2="1">
+                  <stop offset="0%" stop-color="#FFF8E0" />
+                  <stop offset="100%" stop-color="#FFECB3" />
+                </linearGradient>
+                <linearGradient id="circle" x1="0" x2="1">
+                  <stop offset="0%" stop-color="#FFD180" />
+                  <stop offset="100%" stop-color="#FFB74D" />
+                </linearGradient>
+              </defs>
 
-              <rect
-                x="120"
-                y="180"
-                width="260"
-                height="140"
-                rx="12"
-                fill="#2196F3"
-              />
-              <rect
-                x="135"
-                y="195"
-                width="230"
-                height="95"
-                rx="10"
-                fill="white"
-              />
-              <rect
-                x="200"
-                y="300"
-                width="100"
-                height="14"
-                rx="7"
-                fill="#1E88E5"
-              />
+              <rect width="800" height="600" rx="40" fill="url(#bg)" />
 
-              <rect
-                x="155"
-                y="215"
-                width="120"
-                height="14"
-                rx="7"
-                fill="#90CAF9"
-              />
-              <rect
-                x="155"
-                y="240"
-                width="160"
-                height="14"
-                rx="7"
-                fill="#BBDEFB"
-              />
-              <rect
-                x="155"
-                y="265"
-                width="100"
-                height="14"
-                rx="7"
-                fill="#90CAF9"
-              />
+              <circle cx="650" cy="110" r="110" fill="#FFE0B2" opacity="0.45" />
+              <circle cx="150" cy="500" r="130" fill="#FFE0B2" opacity="0.45" />
 
-              <rect
-                x="285"
-                y="115"
-                width="140"
-                height="45"
-                rx="20"
-                fill="#42A5F5"
-              />
-              <text
-                x="300"
-                y="145"
-                fill="white"
-                font-size="18"
-                font-family="sans-serif"
-              >
-                SIGN UP
-              </text>
+              <circle cx="280" cy="270" r="150" fill="url(#circle)" />
 
-              <g transform="translate(60,120)">
-                <rect
-                  x="300"
-                  y="100"
-                  width="60"
-                  height="80"
-                  rx="20"
-                  fill="#FFCA28"
-                />
-
-                <circle cx="330" cy="85" r="30" fill="#FDD6B3" />
-
-                <path d="M305 75c10-25 50-28 55 0" fill="#3E2723" />
-
+              <g transform="translate(210,160)">
+                <circle cx="80" cy="40" r="35" fill="#FFE0B2" />
                 <path
-                  d="M292 125c0 20 12 25 22 25l22-8"
-                  stroke="#FDD6B3"
-                  stroke-width="10"
+                  d="M48 38c6-18 34-28 56-18 7 3 17 10 13 24-6 19-52 27-69 6z"
+                  fill="#3A3A3A"
+                />
+                <circle cx="65" cy="42" r="3.5" fill="#2B2B2B" />
+                <circle cx="95" cy="42" r="3.5" fill="#2B2B2B" />
+                <path
+                  d="M66 56c6 6 18 6 24 0"
+                  stroke="#2B2B2B"
+                  stroke-width="2"
+                  fill="none"
                   stroke-linecap="round"
                 />
 
                 <rect
-                  x="330"
-                  y="145"
-                  width="40"
+                  x="40"
+                  y="70"
+                  width="90"
+                  height="80"
+                  rx="18"
+                  fill="#FFD180"
+                />
+
+                <rect
+                  x="30"
+                  y="95"
+                  width="28"
+                  height="14"
+                  rx="7"
+                  fill="#FFE0B2"
+                />
+                <rect
+                  x="116"
+                  y="95"
+                  width="28"
+                  height="14"
+                  rx="7"
+                  fill="#FFE0B2"
+                />
+
+                <g transform="translate(20,105)">
+                  <rect
+                    x="0"
+                    y="0"
+                    width="160"
+                    height="85"
+                    rx="10"
+                    fill="#2D2D2D"
+                  />
+                  <rect
+                    x="22"
+                    y="20"
+                    width="116"
+                    height="10"
+                    rx="5"
+                    fill="#EAF2FF"
+                  />
+                  <rect
+                    x="22"
+                    y="38"
+                    width="100"
+                    height="10"
+                    rx="5"
+                    fill="#EAF2FF"
+                  />
+                  <circle cx="80" cy="68" r="6" fill="#FFE0B2" />
+                </g>
+              </g>
+
+              <g transform="translate(470,260) rotate(-6)">
+                <rect
+                  width="240"
+                  height="150"
+                  rx="16"
+                  fill="#fff"
+                  opacity="0.9"
+                />
+                <rect
+                  x="18"
+                  y="26"
+                  width="200"
+                  height="16"
+                  rx="8"
+                  fill="#FFD180"
+                />
+                <rect
+                  x="18"
+                  y="56"
+                  width="160"
                   height="10"
-                  rx="4"
-                  fill="#EF6C00"
+                  rx="5"
+                  fill="#FFECB3"
+                />
+                <rect
+                  x="18"
+                  y="74"
+                  width="120"
+                  height="10"
+                  rx="5"
+                  fill="#FFF3D1"
+                />
+
+                <rect
+                  x="18"
+                  y="98"
+                  width="90"
+                  height="26"
+                  rx="13"
+                  fill="#FFD180"
                 />
               </g>
+
+              <ellipse
+                cx="280"
+                cy="430"
+                rx="120"
+                ry="20"
+                fill="#000"
+                opacity="0.05"
+              />
             </svg>
           </div>
           <form className="flex flex-col w-full p-8 mt-10 bg-gray-100 rounded-lg lg:w-2/6 md:w-1/2 md:ml-auto md:mt-0">
@@ -158,7 +197,7 @@ function Signup() {
 
             <div className="relative mb-4">
               <label
-                htmlFor="firstName"
+                htmlFor="email"
                 className="text-sm leading-7 
                  text-gray-600"
               >
@@ -189,7 +228,7 @@ function Signup() {
 
             <div className="relative mb-4">
               <label
-                htmlFor="firstName"
+                htmlFor="mobileNumber"
                 className="text-sm leading-7 
                  text-gray-600"
               >
@@ -266,9 +305,9 @@ function Signup() {
 
             <p className="mt-3 text-x5 text-gray-500">
               Already have an account?{" "}
-              <a href="/login" className="text-yellow-500">
+              <Link to="/auth/login " className="text-yellow-500">
                 Login
-              </a>
+              </Link>
             </p>
           </form>
         </div>
