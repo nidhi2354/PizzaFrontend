@@ -199,7 +199,7 @@ function Login() {
              text-gray-900
               title-font"
             >
-              Login
+              Sign in
             </h2>
 
             <div className="relative mb-4">

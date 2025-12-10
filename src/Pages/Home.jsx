@@ -153,3 +153,5 @@ function Home() {
 }
 
 export default Home;
+
+// VITE_BACKEND_URL = https://pizza-palace-1.onrender.com/

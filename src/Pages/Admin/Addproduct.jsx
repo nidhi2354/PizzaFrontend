@@ -1,146 +1,152 @@
 import Layout from "../../Layouts/Layouts";
+
+import Food from "../../assets/Images/food.svg";
 function AddProduct() {
   return (
     <Layout>
       <section className="py-12">
-        <div className="max-w-md mx-auto mt-8 bg-white p-7">
-          <h2 className="mb-4 text-2xl font-semibold">Add Product</h2>
+        <div className="flex items-center justify-center px-4">
+          <div className="md:w-2/6">
+            <img src={Food} />
+          </div>
+          <div className="max-w-md  md:w-4/6 mx-auto mt-8 bg-white p-7">
+            <h2 className="mb-4 text-2xl font-semibold">Add Product</h2>
 
-          <form>
-            {/*product name */}
-            <div className="mb-4">
-              <label
-                htmlFor="productName"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Product name
-                <span className="text-red-500">*</span>
-              </label>
+            <form>
+              {/*product name */}
+              <div className="mb-4">
+                <label
+                  htmlFor="productName"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Product name
+                  <span className="text-red-500">*</span>
+                </label>
 
-              <input
-                type="text"
-                required
-                minLength={5}
-                maxLength={20}
-                name="productName"
-                id="productName"
-                className="mt-1 p-2 w-full border border-gray-300 rounded-md rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              />
-            </div>
+                <input
+                  type="text"
+                  required
+                  minLength={5}
+                  maxLength={20}
+                  name="productName"
+                  id="productName"
+                  className="mt-1 p-2 w-full border border-gray-300 rounded-md rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
 
-            {/** description */}
-            <div className="mb-4">
-              <label
-                htmlFor="description"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Description
-              </label>
+              {/** description */}
+              <div className="mb-4">
+                <label
+                  htmlFor="description"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Description
+                </label>
 
-              <input
-                type="text"
-                minLength={5}
-                maxLength={60}
-                name="description"
-                id="description"
-                className="mt-1 p-2 w-full border border-gray-300 rounded-md rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              />
-            </div>
+                <input
+                  type="text"
+                  minLength={5}
+                  maxLength={60}
+                  name="description"
+                  id="description"
+                  className="mt-1 p-2 w-full border border-gray-300 rounded-md rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
 
-            {/**price */}
+              {/**price */}
 
-            <div className="mb-4">
-              <label
-                htmlFor="price"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Product price
-                <span className="text-red-500">*</span>
-              </label>
+              <div className="mb-4">
+                <label
+                  htmlFor="price"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Product price
+                  <span className="text-red-500">*</span>
+                </label>
 
-              <input
-                type="text"
-                required
-                name="price"
-                id="price"
-                className="mt-1 p-2 w-full border border-gray-300 rounded-md rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              />
-            </div>
+                <input
+                  type="text"
+                  required
+                  name="price"
+                  id="price"
+                  className="mt-1 p-2 w-full border border-gray-300 rounded-md rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
 
-            {/** quantity */}
+              {/** quantity */}
 
-            <div className="mb-4">
-              <label
-                htmlFor="quantity"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Quantity
-                <span className="text-red-500">*</span>
-              </label>
+              <div className="mb-4">
+                <label
+                  htmlFor="quantity"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Quantity
+                  <span className="text-red-500">*</span>
+                </label>
 
-              <input
-                type="number"
-                required
-                name="quantity"
-                id="quantity"
-                className="mt-1 p-2 w-full border border-gray-300 rounded-md rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              />
-            </div>
+                <input
+                  type="number"
+                  required
+                  name="quantity"
+                  id="quantity"
+                  className="mt-1 p-2 w-full border border-gray-300 rounded-md rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
 
-            {/**category */}
-            <div className="mb-2">
-              <label
-                htmlFor="category"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Select Category
-                <span className="text-red-500">*</span>
-              </label>
-              <select
-                name="category"
-                id="category"
-                className="mt-1 p-2 w-full border border-gray-300 runded-md focus:outline-none
+              {/**category */}
+              <div className="mb-2">
+                <label
+                  htmlFor="category"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Select Category
+                  <span className="text-red-500">*</span>
+                </label>
+                <select
+                  name="category"
+                  id="category"
+                  className="mt-1 p-2 w-full border border-gray-300 runded-md focus:outline-none
               focus:ring-indigo-500
               focus:border-indigo-500 sm:text-sm"
-              >
-                <option value="veg">Vegetrian</option>
-                <option value="non-veg">Non-Vegetarian</option>
-                <option value="drinks">Soft drinks</option>
-                <option value="sides">Sides</option>
-              </select>
-            </div>
-
-            {/** Image */}
-            <div className="mb-4">
-              <label
-                htmlFor="productImage"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Product Image{" "}
-                <span
-                  className="text-red-500
-              "
                 >
-                  (.jpg, .png, .jpeg)
-                </span>
-                <input
-                  type="file"
-                  required
-                  name="productImage"
-                  id="productImage"
-                  accept=""
-                  className="mt-1 p-2 w-full border
+                  <option value="veg">Vegetrian</option>
+                  <option value="non-veg">Non-Vegetarian</option>
+                  <option value="drinks">Soft drinks</option>
+                  <option value="sides">Sides</option>
+                </select>
+              </div>
+
+              {/** Image */}
+              <div className="mb-4">
+                <label
+                  htmlFor="productImage"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Product Image{" "}
+                  <span
+                    className="text-red-500
+              "
+                  >
+                    (.jpg, .png, .jpeg)
+                  </span>
+                  <input
+                    type="file"
+                    required
+                    name="productImage"
+                    id="productImage"
+                    accept=""
+                    className="mt-1 p-2 w-full border
               border-gray-300
               rounded-md
               focus:outline-none
               focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                ></input>
-              </label>
-            </div>
+                  ></input>
+                </label>
+              </div>
 
-            <button
-              type="submit"
-              className="w-full 
+              <button
+                type="submit"
+                className="w-full 
         bg-yellow-500
         text-white 
         p-2
@@ -151,10 +157,11 @@ function AddProduct() {
         focus:ring-opacity-50
         transition duration-300 
         ease-in-out"
-            >
-              Add product
-            </button>
-          </form>
+              >
+                Add product
+              </button>
+            </form>
+          </div>
         </div>
       </section>
     </Layout>
