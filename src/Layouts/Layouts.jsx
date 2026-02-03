@@ -1,7 +1,19 @@
 import Pizzalogo from "../assets/Images/Pizzalogo.png";
 import Footer from "../Components/footer.jsx";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { logout } from "../Redux/Slices/AuthSlice";
 
+//eslint-disable-next-line react/prop-types
 function Layout({ children }) {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
+  const dispatch = useDispatch();
+
+  async function handleLogout(e) {
+    e.preventDefault();
+    dispatch(logout());
+  }
   return (
     <div>
       <nav className="flex items-center justify-around h-16 text-[#68B7280] font-mono border-none shadow-md">
@@ -24,6 +36,18 @@ function Layout({ children }) {
             <li className="hover:text-[#FF9110]">
               {" "}
               <p>About </p>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <ul className="flex gap-4">
+            <li className="hover:text-[#FF9110]">
+              {isLoggedIn ? (
+                <Link onClick={handleLogout}>Logout</Link>
+              ) : (
+                <Link to="/auth/login">Login</Link>
+              )}
             </li>
           </ul>
         </div>

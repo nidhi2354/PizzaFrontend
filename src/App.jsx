@@ -19,8 +19,10 @@ function App() {
         <Route path="/denied" element={<Denied />} />
         <Route path="/auth/signup" element={<Signup />} />
         <Route path="/auth/login" element={<Login />} />
-        <Route path="*" element={<NotFound />} />
+
         <Route path="/admin/addProduct" element={<AddProduct />} />
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
