@@ -1,6 +1,9 @@
 import Pizzalogo from "../assets/Images/Pizzalogo.png";
 import Footer from "../Components/footer.jsx";
 import { useSelector, useDispatch } from "react-redux";
+
+import { useNavigate } from "react-router-dom";
+
 import { Link } from "react-router-dom";
 import { logout } from "../Redux/Slices/AuthSlice";
 
@@ -10,14 +13,21 @@ function Layout({ children }) {
 
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+
   async function handleLogout(e) {
     e.preventDefault();
     dispatch(logout());
+    navigate("/");
   }
   return (
     <div>
       <nav className="flex items-center justify-around h-16 text-[#68B7280] font-mono border-none shadow-md">
-        <div className="flex items-center justify-center">
+        <div
+          className="flex items-center justify-center"
+          onClick={() => navigate("/")}
+        >
+          <p>Pizza App</p>
           <img src={Pizzalogo} alt="Pizza logo" />
         </div>
 

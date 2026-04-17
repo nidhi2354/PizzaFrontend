@@ -6,10 +6,23 @@ import PickupFood from "../assets/Images/PickupFood.png";
 import EnjoyFood from "../assets/Images/EnjoyFood.png";
 
 import CookingImage from "../assets/Images/CookingImage.png";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+
 import { PatchCheck } from "../Components/Icons/PatchCheck.jsx";
 import Layout from "../Layouts/Layouts.jsx";
+import { getAllProducts } from "../Redux/Slices/ProductSlice.js";
 
 function Home() {
+  const dispatch = useDispatch();
+
+  const { productsData } = useSelector((state) => state.product);
+
+  useEffect(() => {
+    // This will be called when the component mounts,
+
+    dispatch(getAllProducts());
+  }, []);
   return (
     <Layout>
       <div>
@@ -147,6 +160,10 @@ function Home() {
             </div>
           </div>
         </section>
+
+        {productsData.map((product) => (
+          <div key={product._id}>{product.name}</div>
+        ))}
       </div>
     </Layout>
   );
