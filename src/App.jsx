@@ -11,6 +11,7 @@ import NotFound from "./Pages/Auth/NotFound.jsx";
 import Denied from "./Pages/Auth/Denied.jsx";
 import AddProduct from "./Pages/Admin/Addproduct.jsx";
 
+import ProductDetails from "./Pages/Products/ProductDetail.jsx";
 function App() {
   return (
     <>
@@ -21,6 +22,8 @@ function App() {
         <Route path="/auth/login" element={<Login />} />
 
         <Route path="/admin/addProduct" element={<AddProduct />} />
+
+        <Route path="/product/:productId" element={<ProductDetails />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

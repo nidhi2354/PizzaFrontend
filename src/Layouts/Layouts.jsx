@@ -20,6 +20,7 @@ function Layout({ children }) {
     dispatch(logout());
     navigate("/");
   }
+
   return (
     <div>
       <nav className="flex items-center justify-around h-16 text-[#68B7280] font-mono border-none shadow-md">

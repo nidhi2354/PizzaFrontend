@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axiosInstance from "../../Helpers/axiosInstance";
 import { toast } from "react-hot-toast";
 
@@ -16,7 +16,7 @@ const initialState = {
   data: safeParse(localStorage.getItem("data")),
 };
 
-// ⭐ Create Account Thunk
+// ⭐ CREATE ACCOUNT
 export const createAccount = createAsyncThunk(
   "auth/createAccount",
   async (data, { rejectWithValue }) => {
@@ -24,20 +24,20 @@ export const createAccount = createAsyncThunk(
       const promise = axiosInstance.post("/users", data);
 
       toast.promise(promise, {
-        loading: "Hold on... we are registering your account 🕒",
-        success: (res) => res?.data?.message || "Account created!",
-        error: "Something went wrong. Try again later ❌",
+        loading: "Creating account...",
+        success: "Account created!",
+        error: "Something went wrong",
       });
 
       const response = await promise;
-      return response.data; // server response
+      return response.data;
     } catch (error) {
-      return rejectWithValue(error.response?.data || "Server Error");
+      return rejectWithValue(error.response?.data);
     }
   },
 );
 
-//login thunk
+// ⭐ LOGIN
 export const login = createAsyncThunk(
   "auth/login",
   async (data, { rejectWithValue }) => {
@@ -45,39 +45,40 @@ export const login = createAsyncThunk(
       const promise = axiosInstance.post("/auth/login", data);
 
       toast.promise(promise, {
-        loading: "Hold on... we are registering your account 🕒",
-        success: (res) => res?.data?.message || "Account created!",
-        error: "Something went wrong. Try again later ❌",
+        loading: "Logging in...",
+        success: "Login successful!",
+        error: "Login failed",
       });
 
       const response = await promise;
-      return response.data; // server response
+      return response.data;
     } catch (error) {
-      return rejectWithValue(error.response?.data || "Server Error");
+      return rejectWithValue(error.response?.data);
     }
   },
 );
-//logout thunk
+
+// ⭐ LOGOUT
 export const logout = createAsyncThunk(
   "auth/logout",
   async (_, { rejectWithValue }) => {
-    console.log("incoming  data to the thunk");
     try {
       const promise = axiosInstance.post("/auth/logout");
 
       toast.promise(promise, {
         loading: "Logging out...",
-        success: (res) => res?.data?.message || "Account created!",
-        error: "Something went wrong. Try again later ❌",
+        success: "Logged out",
+        error: "Logout failed",
       });
 
       const response = await promise;
-      return response.data; // server response
+      return response.data;
     } catch (error) {
-      return rejectWithValue(error.response?.data || "Server Error");
+      return rejectWithValue(error.response?.data);
     }
   },
 );
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -85,26 +86,8 @@ const authSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      // .addCase(login.fulfilled, (state, action) => {
-      //   // reducer which will execute when the login thunk is fulfilled
-      //   const user = action.payload.data.user;
 
-      //   state.isLoggedIn = true;
-
-      //   (state.role = action?.payload?.data?.data?.userRole),
-      //     (state.data = action?.payload?.data?.data.userData);
-
-      //   // state.data = user;
-      //   // state.role = user?.role || "USER";
-
-      //   // ⭐ Save in localStorage
-      //   localStorage.setItem("isLoggedIn", "true");
-      //   localStorage.setItem(
-      //     "data",
-      //     JSON.stringify(action?.payload?.data?.data?.userData)
-      //   );
-      //   localStorage.setItem("role", action?.payload?.data?.data?.userRole);
-      // })
+      // ================= LOGIN =================
       .addCase(login.fulfilled, (state, action) => {
         const user = action.payload?.data?.user;
 
@@ -112,25 +95,24 @@ const authSlice = createSlice({
         state.data = user;
         state.role = user?.role || "USER";
 
-        // Save to localStorage
+        // ⭐ only user data save (NO TOKEN)
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("data", JSON.stringify(user));
         localStorage.setItem("role", state.role);
       })
 
+      // ================= LOGOUT =================
       .addCase(logout.fulfilled, (state) => {
-        // reducer which will execute when logout thunk is fulfilled
-
-        // localStorage.setItem("isLoggedIn", false);
-        localStorage.setItem("isLoggedIn", "false");
-
-        localStorage.setItem("role", "");
-
-        localStorage.setItem("data", JSON.stringify({}));
         state.isLoggedIn = false;
         state.role = "";
         state.data = {};
+
+        localStorage.setItem("isLoggedIn", "false");
+        localStorage.setItem("role", "");
+        localStorage.setItem("data", JSON.stringify({}));
       })
+
+      // ================= CREATE ACCOUNT =================
       .addCase(createAccount.rejected, (state) => {
         state.isLoggedIn = false;
       });

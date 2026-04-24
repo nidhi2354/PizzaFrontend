@@ -27,6 +27,28 @@ export const getAllProducts = createAsyncThunk("/products/getAll", async () => {
   }
 });
 
+export const getproductDetails = createAsyncThunk(
+  "/products/getDetails",
+  async (id) => {
+    try {
+      const products = axiosInstance.get(`/products/${id}`);
+
+      toast.promise(products, {
+        loading: "Loading the product",
+        error: "Something went cannot load product",
+        success: "Products loaded successfully",
+      });
+
+      //
+      const apiResponse = await products;
+      return apiResponse.data.data;
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    }
+  },
+);
+
 const productSlice = createSlice({
   name: "product",
   initialState,
@@ -34,7 +56,9 @@ const productSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getAllProducts.fulfilled, (state, action) => {
       console.log(action.payload);
-      state.productsData = action?.payload?.data?.data;
+
+      console.log(action);
+      state.productsData = action?.payload;
     });
   },
 });
