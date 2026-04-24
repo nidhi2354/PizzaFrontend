@@ -5,10 +5,10 @@ import { useDispatch } from "react-redux";
 import { createAccount } from "../../Redux/Slices/AuthSlice";
 import { useNavigate } from "react-router-dom";
 
-//Container for the signup page
 function Signup() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [signUpState, setSignUpState] = useState({
     firstName: "",
     email: "",
@@ -18,62 +18,41 @@ function Signup() {
 
   function handleUserInput(e) {
     const { name, value } = e.target;
-    setSignUpState({
-      ...signUpState,
-      [name]: value,
-    });
+    setSignUpState((prev) => ({ ...prev, [name]: value }));
   }
 
   async function handleFormSubmit(e) {
     e.preventDefault();
-    console.log(signUpState);
+    const { firstName, email, mobileNumber, password } = signUpState;
 
-    // Add validations for the form input
-    if (
-      !signUpState.email ||
-      !signUpState.mobileNumber ||
-      !signUpState.password ||
-      !signUpState.firstName
-    ) {
-      toast.error("Missing values from the form");
+    if (!firstName || !email || !mobileNumber || !password) {
+      toast.error("Please fill in all fields");
       return;
     }
-
-    if (signUpState.firstName.length < 5 || signUpState.firstName.length > 20) {
-      toast.error(
-        "First name should be atleast 5 characters long and maximum 20 characters long"
-      );
+    if (firstName.length < 5 || firstName.length > 20) {
+      toast.error("First name must be 5–20 characters");
       return;
     }
-
-    //check email
-
-    if (signUpState.email.includes("0") || !signUpState.email.includes(".")) {
+    if (!email.includes("@") || !email.includes(".")) {
       toast.error("Invalid email address");
       return;
     }
-
-    //check mobileNo length to be between 10-12
-    if (
-      signUpState.mobileNumber.length < 10 ||
-      signUpState.mobileNumber.length > 12
-    ) {
-      toast.error("Mobile number should be between 10-12 characters");
+    if (mobileNumber.length < 10 || mobileNumber.length > 12) {
+      toast.error("Mobile number must be 10–12 digits");
       return;
     }
 
-    const apiResponse = await dispatch(createAccount(signUpState));
-    // console.log("API response is ", apiResponse);
-
-    if (apiResponse.payload.success) {
-      navigate("/auth/login");
-    }
+    setLoading(true);
+    const res = await dispatch(createAccount(signUpState));
+    setLoading(false);
+    if (res.payload?.success) navigate("/auth/login");
   }
 
   return (
     <SignUpPresentation
       handleFormSubmit={handleFormSubmit}
       handleUserInput={handleUserInput}
+      loading={loading}
     />
   );
 }

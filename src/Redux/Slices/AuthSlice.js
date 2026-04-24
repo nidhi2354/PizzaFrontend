@@ -90,15 +90,16 @@ const authSlice = createSlice({
       // ================= LOGIN =================
       .addCase(login.fulfilled, (state, action) => {
         const user = action.payload?.data?.user;
+        const token = action.payload?.data?.token;
 
         state.isLoggedIn = true;
         state.data = user;
         state.role = user?.role || "USER";
 
-        // ⭐ only user data save (NO TOKEN)
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("data", JSON.stringify(user));
         localStorage.setItem("role", state.role);
+        if (token) localStorage.setItem("authToken", token);
       })
 
       // ================= LOGOUT =================
@@ -110,6 +111,7 @@ const authSlice = createSlice({
         localStorage.setItem("isLoggedIn", "false");
         localStorage.setItem("role", "");
         localStorage.setItem("data", JSON.stringify({}));
+        localStorage.removeItem("authToken");
       })
 
       // ================= CREATE ACCOUNT =================

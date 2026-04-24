@@ -60,7 +60,11 @@ export const getCartDetails = createAsyncThunk(
 const cartSlice = createSlice({
   name: "cart",
   initialState,
-  reducers: {},
+  reducers: {
+    clearCartLocal: (state) => {
+      if (state.cartData) state.cartData.items = [];
+    },
+  },
 
   extraReducers: (builder) => {
     builder
@@ -90,4 +94,5 @@ const cartSlice = createSlice({
   },
 });
 
+export const { clearCartLocal } = cartSlice.actions;
 export default cartSlice.reducer;
