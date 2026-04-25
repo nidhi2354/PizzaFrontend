@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Layout from "../../Layouts/Layouts";
 import axiosInstance from "../../Helpers/axiosInstance";
 import { toast } from "react-hot-toast";
-import Food from "../../assets/Images/food.svg";
+import Food from "../../assets/Images/Food.svg";
 
 function AddProduct() {
   const navigate = useNavigate();
@@ -55,10 +55,17 @@ function AddProduct() {
         {
           loading: "Adding product...",
           success: "Product added successfully!",
-          error: (err) => err?.response?.data?.message || "Failed to add product",
-        }
+          error: (err) =>
+            err?.response?.data?.message || "Failed to add product",
+        },
       );
-      setForm({ productName: "", description: "", price: "", quantity: "", category: "veg" });
+      setForm({
+        productName: "",
+        description: "",
+        price: "",
+        quantity: "",
+        category: "veg",
+      });
       setImage(null);
       setPreview(null);
       navigate("/");
@@ -78,33 +85,60 @@ function AddProduct() {
 
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-8 items-start">
           <div className="md:w-2/5 flex flex-col items-center gap-4">
-            <img src={Food} alt="illustration" className="w-60 opacity-80" onError={(e) => { e.target.style.display='none'; }} />
+            <img
+              src={Food}
+              alt="illustration"
+              className="w-60 opacity-80"
+              onError={(e) => {
+                e.target.style.display = "none";
+              }}
+            />
             {preview && (
               <div className="w-full">
-                <p className="text-sm text-gray-500 text-center mb-2">Preview</p>
-                <img src={preview} alt="preview" className="w-full h-48 object-cover rounded-xl border border-orange-200 shadow" />
+                <p className="text-sm text-gray-500 text-center mb-2">
+                  Preview
+                </p>
+                <img
+                  src={preview}
+                  alt="preview"
+                  className="w-full h-48 object-cover rounded-xl border border-orange-200 shadow"
+                />
               </div>
             )}
           </div>
 
-          <form onSubmit={handleSubmit} className="flex-1 bg-white rounded-xl shadow-sm border border-orange-100 p-8 space-y-4">
+          <form
+            onSubmit={handleSubmit}
+            className="flex-1 bg-white rounded-xl shadow-sm border border-orange-100 p-8 space-y-4"
+          >
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1">
                 Product Name <span className="text-red-500">*</span>
               </label>
               <input
-                type="text" name="productName" required minLength={5} maxLength={20}
-                value={form.productName} onChange={handleChange}
+                type="text"
+                name="productName"
+                required
+                minLength={5}
+                maxLength={20}
+                value={form.productName}
+                onChange={handleChange}
                 placeholder="e.g. Margherita Pizza"
                 className="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">Description</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-1">
+                Description
+              </label>
               <input
-                type="text" name="description" minLength={5} maxLength={60}
-                value={form.description} onChange={handleChange}
+                type="text"
+                name="description"
+                minLength={5}
+                maxLength={60}
+                value={form.description}
+                onChange={handleChange}
                 placeholder="Short description..."
                 className="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
               />
@@ -116,8 +150,12 @@ function AddProduct() {
                   Price (₹) <span className="text-red-500">*</span>
                 </label>
                 <input
-                  type="number" name="price" required min={1}
-                  value={form.price} onChange={handleChange}
+                  type="number"
+                  name="price"
+                  required
+                  min={1}
+                  value={form.price}
+                  onChange={handleChange}
                   placeholder="e.g. 299"
                   className="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
                 />
@@ -127,8 +165,12 @@ function AddProduct() {
                   Stock Quantity <span className="text-red-500">*</span>
                 </label>
                 <input
-                  type="number" name="quantity" required min={0}
-                  value={form.quantity} onChange={handleChange}
+                  type="number"
+                  name="quantity"
+                  required
+                  min={0}
+                  value={form.quantity}
+                  onChange={handleChange}
                   placeholder="e.g. 10"
                   className="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
                 />
@@ -136,9 +178,13 @@ function AddProduct() {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">Category</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-1">
+                Category
+              </label>
               <select
-                name="category" value={form.category} onChange={handleChange}
+                name="category"
+                value={form.category}
+                onChange={handleChange}
                 className="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
               >
                 <option value="veg">🥦 Vegetarian</option>
@@ -153,7 +199,8 @@ function AddProduct() {
                 Product Image <span className="text-red-500">*</span>
               </label>
               <input
-                type="file" accept=".jpg,.jpeg,.png,.webp"
+                type="file"
+                accept=".jpg,.jpeg,.png,.webp"
                 onChange={handleImageChange}
                 className="w-full text-sm text-gray-500 border border-gray-300 rounded-lg p-2 file:mr-4 file:py-1.5 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-100 file:text-orange-600 hover:file:bg-orange-200"
               />
